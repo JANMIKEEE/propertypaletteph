@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://propertypaletteph.com/sitemap.xml
