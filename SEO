@@ -1,0 +1,64 @@
+<head>
+  <!-- Title & Viewport -->
+  <title>Top Real Estate Properties in Cebu, Manila, and Beyond | Property Palette</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Meta Description -->
+  <meta name="description" content="Explore top pre-selling and ready-for-occupancy properties in the Philippines. Trusted real estate platform for homes, condos, and investment properties in Cebu and beyond.">
+
+  <!-- Meta Robots -->
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+ 
+  <!-- Facebook Open Graph Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Cebu Real Estate Properties | Property Palette">
+  <meta property="og:description" content="Search the best properties in Cebu – beachfront condos, house and lots, and investment-ready homes. Trusted by OFWs and investors across the Philippines.">
+  <meta property="og:image" content="https://propertypaletteph.com/assets/cover.jpg">
+  <meta property="og:url" content="https://propertypaletteph.com">
+  <meta property="og:site_name" content="Property Palette">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cebu Real Estate Properties | Property Palette">
+  <meta name="twitter:description" content="Search the best properties in Cebu – beachfront condos, house and lots, and investment-ready homes.">
+  <meta name="twitter:image" content="https://propertypaletteph.com/assets/cover.jpg">
+
+  <!-- Google Site Verification -->
+  <meta name="google-site-verification" content="YOUR-GOOGLE-VERIFICATION-CODE-HERE">
+
+  <!-- Favicon and Theme -->
+  <link rel="icon" href="https://propertypaletteph.com/favicon.png" sizes="32x32">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Real Estate Business Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "Property Palette",
+    "image": "https://propertypaletteph.com/assets/cover.jpg",
+    "@id": "https://propertypaletteph.com",
+    "url": "https://propertypaletteph.com",
+    "telephone": "+63 912 345 6789",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Unit 101, Real Estate Hub",
+      "addressLocality": "Cebu City",
+      "postalCode": "6000",
+      "addressCountry": "PH"
+    },
+    "priceRange": "₱₱",
+    "openingHours": "Mo-Su 09:00-18:00",
+    "areaServed": {
+      "@type": "Place",
+      "name": ["Cebu", "Davao", "Metro Manila", "Iloilo", "Palawan", "Taguig"]
+    },
+    "sameAs": [
+      "https://www.facebook.com/propertypaletteph",
+      "https://www.instagram.com/propertypaletteph"
+    ]
+  }
+  </script>
+</head>
