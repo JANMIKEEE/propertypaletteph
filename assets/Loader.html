@@ -1,0 +1,66 @@
+<style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #1f1f1f; /* dark background to avoid white flash */
+    }
+
+    /* Loader container */
+    #pp-loader {
+      position: fixed;
+      inset: 0;
+      background: #1f1f1f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2147483647;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.8s ease, visibility 0s linear 0.8s;
+    }
+    #pp-loader.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    #pp-loader img {
+      width: 100px;
+      height: auto;
+      animation: pp-pulse 1.3s ease-in-out infinite;
+    }
+
+    @keyframes pp-pulse {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0.3; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loader -->
+  <div id="pp-loader" aria-hidden="true">
+    <img src="https://propertypaletteph.com/assets/logo.png" alt="Property Palette logo">
+  </div>
+
+  <script>
+    // Loader script - waits for FULL load + 1.3s delay
+    window.addEventListener("load", function () {
+      var loader = document.getElementById('pp-loader');
+
+      // temporarily disable scroll while loading
+      var origHtmlOverflow = document.documentElement.style.overflow;
+      var origBodyOverflow = document.body.style.overflow;
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+
+      setTimeout(function () {
+        if (!loader) return;
+        loader.classList.add('is-hidden');
+        setTimeout(function () {
+          if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
+          // restore scroll
+          document.documentElement.style.overflow = origHtmlOverflow || '';
+          document.body.style.overflow = origBodyOverflow || '';
+        }, 800); // match fade-out
+      }, 1300); // delay after page load
+    });
+  </script>

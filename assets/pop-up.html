@@ -1,0 +1,74 @@
+<!-- Popup Overlay -->
+<div id="custom-popup-overlay" style="
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: none; /* hide initially */
+  align-items: flex-end;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 99999;
+">
+
+  <!-- Popup Box -->
+  <div style="
+    background: #ffffffd9;
+    padding: 20px 16px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 320px;
+    box-shadow: 0 8px 20px rgba(31, 31, 31, 0.25);
+    font-family: 'Quicksand', sans-serif;
+  ">
+
+    <div style="
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    ">
+      Ready to view your next property?
+    </div>
+
+    <a href="https://wa.me/639388694235?text=I%20want%20to%20schedule%20a%20site%20tour" style="
+      display: inline-block;
+      background: #FCD054;
+      color: #070707;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 7px 10px;
+      border-radius: 7px;
+      text-decoration: none;
+      margin-bottom: 10px;
+    ">Schedule a Tour</a>
+
+    <br>
+
+    <button onclick="closeCustomPopup()" style="
+      background: none;
+      border: none;
+      color: #000;
+      font-size: 13px;
+      text-decoration: underline;
+      cursor: pointer;
+      margin-top: 8px;
+    ">Not Now</button>
+
+  </div>
+</div>
+
+<!-- Popup Script -->
+<script>
+  // Show popup after 2 seconds
+  window.onload = function() {
+    setTimeout(function() {
+      document.getElementById("custom-popup-overlay").style.display = "flex";
+    }, 2000);
+  };
+
+  function closeCustomPopup() {
+    var popup = document.getElementById("custom-popup-overlay");
+    popup.style.display = "none";
+  }
+</script>
