@@ -1,0 +1,156 @@
+<head>
+
+  <!-- Hide Framer badge -->
+  <style>
+    #__framer-badge-container {
+      display: none !important;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    #message-us-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #e53935;
+      color: white;
+      padding: 12px 0;
+      width: 120px;
+      height: 40px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1000;
+      text-align: center;
+    }
+
+    #contact-buttons {
+      position: fixed;
+      bottom: 80px;
+      right: 30px;
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 999;
+    }
+
+    .contact-button {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 22px;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .messenger { background: #0084FF; }
+    .whatsapp  { background: #25D366; }
+    .viber     { background: #665CAC; }
+    .sms       { background: #F94B74; }
+    .email     { background: #FFA726; }
+  </style>
+</head>
+
+<body>
+
+  <!-- Floating Contact Buttons -->
+  <div id="contact-buttons">
+    <a href="https://m.me/propertypaletteph?text=I%20want%20to%20schedule%20a%20site%20tour" target="_blank" class="contact-button messenger">
+      <!-- Messenger Icon -->
+      <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
+        <path d="M12.004 2c-5.523 0-10 3.998-10 8.933 0 2.805 1.428 5.293 3.72 6.938v4.129l3.41-1.881c.926.229 1.902.35 2.87.35 5.523 0 10-3.998 10-8.933s-4.477-8.933-10-8.933z"/>
+      </svg>
+    </a>
+
+    <a href="https://wa.me/639388694235?text=I%20want%20to%20schedule%20a%20site%20tour" target="_blank" class="contact-button whatsapp">
+      <!-- WhatsApp Icon -->
+      <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
+        <path d="M.057 24l1.687-6.163A11.87 11.87 0 0111.385.165c6.592 0 11.99 5.328 11.99 11.92 0 6.592-5.372 11.92-11.998 11.92a11.9 11.9 0 01-5.651-1.448L.057 24z"/>
+      </svg>
+    </a>
+
+    <a href="sms:09388694235?body=I%20want%20to%20schedule%20a%20site%20tour" class="contact-button sms">
+      <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
+        <path d="M2 2h20v16H6l-4 4z"/>
+      </svg>
+    </a>
+
+    <a href="mailto:propertypaletteph@gmail.com?subject=Property%20Inquiry&body=I%20want%20to%20schedule%20a%20site%20tour" class="contact-button email">
+      <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
+        <path d="M2 4h20v16H2zm2 2v1.5l8 5 8-5V6z"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Toggle Button -->
+  <button id="message-us-button">Message Us</button>
+
+  <!-- Popup Overlay -->
+  <div id="custom-popup-overlay" style="
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 20px;
+    z-index: 99999;
+  ">
+    <div style="
+      background: #ffffffd9;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 320px;
+      box-shadow: 0 8px 20px rgba(31,31,31,.25);
+    ">
+      <strong>Ready to view your next property?</strong><br><br>
+      <a href="https://wa.me/639388694235" style="
+        background: #FCD054;
+        padding: 8px 12px;
+        border-radius: 6px;
+        text-decoration: none;
+        color: #000;
+        font-weight: 600;
+      ">Schedule a Tour</a><br><br>
+      <button onclick="closeCustomPopup()" style="border:none;background:none;cursor:pointer;">
+        Not Now
+      </button>
+    </div>
+  </div>
+
+  <!-- Scripts (Loaded Last for Performance) -->
+  <script>
+    const toggleBtn = document.getElementById("message-us-button");
+    const contacts = document.getElementById("contact-buttons");
+
+    toggleBtn.addEventListener("click", () => {
+      const open = contacts.style.display === "flex";
+      contacts.style.display = open ? "none" : "flex";
+      toggleBtn.textContent = open ? "Message Us" : "Close";
+    });
+
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.getElementById("custom-popup-overlay").style.display = "flex";
+      }, 10000);
+    });
+
+    function closeCustomPopup() {
+      document.getElementById("custom-popup-overlay").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
