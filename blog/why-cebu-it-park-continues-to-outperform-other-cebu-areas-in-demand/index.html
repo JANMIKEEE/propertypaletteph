@@ -29,6 +29,42 @@
     <meta name="twitter:description" content="Discover why Cebu IT Park remains the top choice for investors and residents, offering unmatched lifestyle, business, and growth opportunities.">
     <meta name="twitter:image" content="https://propertypaletteph.com/assets/blog-pictures/IT-Park.webp">
 
+
+  <!-- Scripts (Loaded Last for Performance) -->
+  <script>
+    const toggleBtn = document.getElementById("message-us-button");
+    const contacts = document.getElementById("contact-buttons");
+
+    toggleBtn.addEventListener("click", () => {
+      const open = contacts.style.display === "flex";
+      contacts.style.display = open ? "none" : "flex";
+      toggleBtn.textContent = open ? "Message Us" : "Close";
+    });
+
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.getElementById("custom-popup-overlay").style.display = "flex";
+      }, 10000);
+    });
+
+    function closeCustomPopup() {
+      document.getElementById("custom-popup-overlay").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
+
+	
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-40NHKG1VW7"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){window.dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', 'G-40NHKG1VW7');
+	</script>
+
 <head>
 
   <!-- Hide Framer badge -->
@@ -186,16 +222,7 @@
 </body>
 </html>
 
-	
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-40NHKG1VW7"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){window.dataLayer.push(arguments);}
-	  gtag('js', new Date());
-	  gtag('config', 'G-40NHKG1VW7');
-	</script>
-	
+
 	<style data-framer-font-css>/* cyrillic-ext */
 @font-face {
   font-family: 'Fjalla One';
