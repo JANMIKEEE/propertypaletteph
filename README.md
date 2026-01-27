@@ -1,5 +1,3 @@
-# PropertyPalette
-
 **PropertyPalettePh.com** is currently being updated to bring you a better, more refined real estate experience.
 
 We’re working behind the scenes to improve content, performance, and features—so everything is clearer, faster, and more valuable for property buyers, investors, and industry professionals.
