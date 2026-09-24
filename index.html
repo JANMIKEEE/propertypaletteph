@@ -50,167 +50,1104 @@
 	
 	
 	<script>try{if(localStorage.getItem("__framer_force_showing_editorbar_since")){const n=document.createElement("link");n.rel="modulepreload";n.href="https://framer.com/edit/init.mjs";document.head.appendChild(n)}}catch(e){}</script>
-	<link rel="canonical" href="https://propertypaletteph.com/"><meta property="og:url" content="https://propertypaletteph.com/"><!-- Start of headStart -->
+	<link rel="canonical" href="https://propertypaletteph.com/"><meta property="og:url" content="https://propertypaletteph.com/">
+	
+	<!-- Start of headStart -->
     
     <!-- End of headStart -->
 	
-<head>
+<style>
 
-  <!-- Hide Framer badge -->
-  <style>
-    #__framer-badge-container {
-      display: none !important;
-    }
+/* =========================
+   READY TO VIEW POPUP
+========================= */
 
-    body {
-      font-family: 'Quicksand', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
+#custom-popup-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.4);
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+  padding:20px;
+  z-index:9999999;
+}
 
-    #message-us-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #e53935;
-      color: white;
-      padding: 12px 0;
-      width: 120px;
-      height: 40px;
-      border: none;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      z-index: 1000;
-      text-align: center;
-    }
+#custom-popup{
+  width:min(420px,100%);
+  background:#fff;
+  border-radius:18px;
+  padding:24px;
+  text-align:center;
+  box-shadow:0 10px 40px rgba(0,0,0,.25);
+  font-family:Arial,sans-serif;
+}
 
-    #contact-buttons {
-      position: fixed;
-      bottom: 80px;
-      right: 30px;
-      display: none;
-      flex-direction: column;
-      gap: 12px;
-      z-index: 999;
-    }
+#custom-popup h3{
+  margin:0 0 8px;
+  font-size:21px;
+  color:#0b2d4d;
+}
 
-    .contact-button {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 22px;
-      text-decoration: none;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
+#custom-popup p{
+  margin:0 0 18px;
+  color:#666;
+  font-size:14px;
+  line-height:1.5;
+}
 
-    .messenger { background: #0084FF; }
-    .whatsapp  { background: #25D366; }
-    .viber     { background: #665CAC; }
-    .sms       { background: #F94B74; }
-    .email     { background: #FFA726; }
-  </style>
-</head>
+.popup-buttons{
+  display:flex;
+  gap:10px;
+}
 
-<body>
+.popup-buttons a,
+.popup-buttons button{
+  flex:1;
+  border:0;
+  border-radius:9px;
+  padding:12px;
+  font-size:14px;
+  cursor:pointer;
+  text-decoration:none;
+}
 
-  <!-- Floating Contact Buttons -->
-  <div id="contact-buttons">
-    <a href="https://m.me/propertypaletteph?text=I%20want%20to%20schedule%20a%20site%20tour" target="_blank" class="contact-button messenger">
-      <!-- Messenger Icon -->
-      <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
-        <path d="M12.004 2c-5.523 0-10 3.998-10 8.933 0 2.805 1.428 5.293 3.72 6.938v4.129l3.41-1.881c.926.229 1.902.35 2.87.35 5.523 0 10-3.998 10-8.933s-4.477-8.933-10-8.933z"/>
-      </svg>
-    </a>
+.popup-schedule{
+  background:#0b2d4d;
+  color:#fff;
+}
 
-    <a href="https://wa.me/639388694235?text=I%20want%20to%20schedule%20a%20site%20tour" target="_blank" class="contact-button whatsapp">
-      <!-- WhatsApp Icon -->
-      <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
-        <path d="M.057 24l1.687-6.163A11.87 11.87 0 0111.385.165c6.592 0 11.99 5.328 11.99 11.92 0 6.592-5.372 11.92-11.998 11.92a11.9 11.9 0 01-5.651-1.448L.057 24z"/>
-      </svg>
-    </a>
+.popup-close{
+  background:#eee;
+  color:#333;
+}
 
-    <a href="sms:09388694235?body=I%20want%20to%20schedule%20a%20site%20tour" class="contact-button sms">
-      <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
-        <path d="M2 2h20v16H6l-4 4z"/>
-      </svg>
-    </a>
 
-    <a href="mailto:inquiry@propertypaletteph.com?subject=Property%20Inquiry&body=I%20want%20to%20schedule%20a%20site%20tour" class="contact-button email">
-      <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
-        <path d="M2 4h20v16H2zm2 2v1.5l8 5 8-5V6z"/>
-      </svg>
-    </a>
-  </div>
+/* =========================
+   MESSAGE US BUTTON
+========================= */
 
-  <!-- Toggle Button -->
-  <button id="message-us-button">Message Us</button>
+#messageUs{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  width:120px;
+  height:40px;
+  border:0;
+  border-radius:12px;
+  background:#e53935;
+  color:#fff;
+  font-size:14px;
+  font-weight:400;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 4px 14px rgba(0,0,0,.22);
+  z-index:999997;
+}
 
-  <!-- Popup Overlay -->
-  <div id="custom-popup-overlay" style="
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.4);
-    display: none;
-    align-items: flex-end;
-    justify-content: center;
-    padding: 20px;
-    z-index: 99999;
-  ">
-    <div style="
-      background: #ffffffd9;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      max-width: 320px;
-      box-shadow: 0 8px 20px rgba(31,31,31,.25);
-    ">
-      <strong>Ready to view your next property?</strong><br><br>
-      <a href="https://wa.me/639388694235" style="
-        background: #FCD054;
-        padding: 8px 12px;
-        border-radius: 6px;
-        text-decoration: none;
-        color: #000;
-        font-weight: 600;
-      ">Schedule a Tour</a><br><br>
-      <button onclick="closeCustomPopup()" style="border:none;background:none;cursor:pointer;">
+
+/* =========================
+   CONTACT BUTTONS
+========================= */
+
+#contactButtons{
+  position:fixed;
+  right:20px;
+  bottom:70px;
+  display:none;
+  flex-direction:column;
+  gap:8px;
+  align-items:flex-end;
+  z-index:999998;
+}
+
+.contact-button{
+  width:50px;
+  height:50px;
+  border:0;
+  border-radius:50%;
+  color:#fff;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.2);
+  pointer-events:auto;
+}
+
+.contact-button svg{
+  width:25px;
+  height:25px;
+  pointer-events:none;
+}
+
+.messenger{
+  background:#0084ff;
+}
+
+.whatsapp{
+  background:#25d366;
+}
+
+.viber{
+  background:#7360f2;
+}
+
+.sms{
+  background:#555;
+}
+
+.email{
+  background:#0b2d4d;
+}
+
+
+/* =========================
+   CALCULATOR BUTTON
+========================= */
+
+#calculatorOpen{
+  position:fixed;
+  right:20px;
+  bottom:70px;
+  width:50px;
+  height:40px;
+  border:0;
+  border-radius:12px;
+  background:#0b2d4d;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 4px 14px rgba(0,0,0,.22);
+  z-index:999999;
+}
+
+#calculatorOpen svg{
+  pointer-events:none;
+}
+
+
+/* =========================
+   CALCULATOR OVERLAY
+========================= */
+
+#calculatorOverlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.5);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:1000000;
+}
+
+#calculatorBox{
+  width:min(430px,100%);
+  max-height:90vh;
+  overflow:auto;
+  background:#fff;
+  border-radius:18px;
+  padding:22px;
+  box-shadow:0 15px 50px rgba(0,0,0,.3);
+  font-family:Arial,sans-serif;
+}
+
+#calculatorBox h2{
+  margin:0 0 18px;
+  color:#0b2d4d;
+  font-size:21px;
+}
+
+.calc-close{
+  float:right;
+  border:0;
+  background:none;
+  font-size:24px;
+  cursor:pointer;
+  color:#777;
+}
+
+.calc-group{
+  margin-bottom:14px;
+}
+
+.calc-group label{
+  display:block;
+  margin-bottom:6px;
+  font-size:13px;
+  font-weight:600;
+  color:#333;
+}
+
+.calc-group input,
+.calc-group select{
+  width:100%;
+  box-sizing:border-box;
+  padding:11px;
+  border:1px solid #ddd;
+  border-radius:8px;
+  font-size:14px;
+}
+
+.calc-options{
+  display:flex;
+  gap:8px;
+  margin-bottom:10px;
+}
+
+.calc-options button{
+  flex:1;
+  padding:9px;
+  border:1px solid #ddd;
+  background:#f5f5f5;
+  border-radius:7px;
+  cursor:pointer;
+}
+
+.calc-options button.active{
+  background:#0b2d4d;
+  color:#fff;
+  border-color:#0b2d4d;
+}
+
+
+/* =========================
+   MONTHLY PAYMENT
+========================= */
+
+.monthly-box{
+  margin-top:16px;
+  padding:16px;
+  border-radius:10px;
+  background:#fff4f3;
+  border:1px solid #ffd6d3;
+}
+
+.monthly-label{
+  margin:0 0 5px !important;
+  color:#555;
+  font-size:13px !important;
+}
+
+.monthly-payment{
+  margin:0 !important;
+  font-size:25px !important;
+  font-weight:700;
+  color:#e53935;
+}
+
+
+/* =========================
+   DISCLAIMER
+========================= */
+
+.calc-disclaimer{
+  margin-top:14px !important;
+  font-size:11px !important;
+  line-height:1.45;
+  color:#888;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:480px){
+
+  #messageUs{
+    width:120px;
+  }
+
+  #contactButtons{
+    right:20px;
+  }
+
+}
+
+</style>
+
+
+<!-- =========================
+     READY TO VIEW POPUP
+========================= -->
+
+<div id="custom-popup-overlay">
+
+  <div id="custom-popup">
+
+    <h3>Ready to view your next property?</h3>
+
+    <p>
+      Let's schedule a quick site tour and see if this property
+      is the right fit for you.
+    </p>
+
+    <div class="popup-buttons">
+
+      <a
+        class="popup-schedule"
+        href="https://wa.me/639388694235?text=I%20want%20to%20schedule%20a%20site%20tour"
+        target="_blank">
+        Schedule a Tour
+      </a>
+
+      <button
+        class="popup-close"
+        id="popupClose">
         Not Now
       </button>
+
     </div>
+
   </div>
 
-  <!-- Scripts (Loaded Last for Performance) -->
-  <script>
-    const toggleBtn = document.getElementById("message-us-button");
-    const contacts = document.getElementById("contact-buttons");
+</div>
 
-    toggleBtn.addEventListener("click", () => {
-      const open = contacts.style.display === "flex";
-      contacts.style.display = open ? "none" : "flex";
-      toggleBtn.textContent = open ? "Message Us" : "Close";
-    });
 
-    window.addEventListener("load", () => {
-      setTimeout(() => {
-        document.getElementById("custom-popup-overlay").style.display = "flex";
-      }, 10000);
-    });
+<!-- =========================
+     CONTACT BUTTONS
+========================= -->
 
-    function closeCustomPopup() {
-      document.getElementById("custom-popup-overlay").style.display = "none";
+<div id="contactButtons">
+
+
+  <!-- MESSENGER -->
+
+  <a
+    href="https://m.me/propertypaletteph?text=I%20want%20to%20schedule%20a%20site%20tour"
+    target="_blank"
+    class="contact-button messenger"
+    title="Messenger">
+
+    <svg viewBox="0 0 24 24" fill="currentColor">
+
+      <path d="M12 2C6.48 2 2 5.92 2 10.76c0 2.76 1.37 5.21 3.51 6.85V21l3.24-1.78c1.02.29 2.11.44 3.25.44 5.52 0 10-3.92 10-8.76S17.52 2 12 2zm.99 11.75-2.61-2.78-5.1 2.78 5.61-5.95 2.61 2.78 5.1-2.78-5.61 5.95z"/>
+
+    </svg>
+
+  </a>
+
+
+  <!-- WHATSAPP -->
+
+  <a
+    href="https://wa.me/639388694235?text=I%20want%20to%20schedule%20a%20site%20tour"
+    target="_blank"
+    class="contact-button whatsapp"
+    title="WhatsApp">
+
+    <svg viewBox="0 0 24 24" fill="currentColor">
+
+      <path d="M12 2C6.48 2 2 6.25 2 11.5c0 1.86.57 3.59 1.55 5.02L2.1 21.5l5.13-1.42A10.25 10.25 0 0 0 12 21c5.52 0 10-4.25 10-9.5S17.52 2 12 2zm0 17.25c-1.58 0-3.06-.43-4.33-1.18l-.31-.18-3.04.84.86-2.94-.2-.31A7.7 7.7 0 0 1 4.25 11.5c0-4.22 3.48-7.65 7.75-7.65s7.75 3.43 7.75 7.65-3.48 7.75-7.75 7.75zm4.24-5.72c-.23-.12-1.35-.67-1.56-.75-.21-.08-.36-.12-.51.12-.15.23-.59.75-.72.9-.13.16-.26.17-.49.06-.23-.12-.96-.35-1.83-1.1-.68-.59-1.14-1.31-1.27-1.53-.13-.23-.01-.35.1-.46.1-.1.23-.26.35-.39.12-.13.15-.23.23-.39.08-.16.04-.29-.02-.41-.06-.12-.51-1.23-.7-1.69-.18-.43-.36-.37-.51-.38h-.43c-.15 0-.4.06-.61.29-.21.23-.8.78-.8 1.9s.82 2.21.94 2.36c.12.15 1.61 2.47 3.91 3.46.55.24.98.39 1.31.5.55.17 1.05.15 1.45.09.44-.07 1.35-.55 1.54-1.08.19-.53.19-.98.13-1.08-.06-.1-.21-.16-.44-.28z"/>
+
+    </svg>
+
+  </a>
+
+
+  <!-- VIBER -->
+
+  <a
+    href="viber://chat?number=639388694235"
+    class="contact-button viber"
+    title="Viber">
+
+    <svg viewBox="0 0 24 24" fill="currentColor">
+
+      <path d="M17.7 2.8C14.5 1.1 8.8 1 5.5 2.5 1.8 4.2 1.1 8.1 1.1 12c0 3.2.8 6.3 3.2 8.6l-1 2.9 3-1c1.8 1 3.9 1.5 5.9 1.5 4 0 8.1-1.4 10-4.9 1.4-3.4 1.2-8.9-.4-12-1-1.8-2.2-3.1-4.1-4.3zm2.2 13.9c-.4.9-1.3 1.5-2.3 1.9-.8.3-1.8.2-2.7-.1-1.9-.7-3.7-1.8-5.2-3.2-1.5-1.4-2.7-3.1-3.5-5-.4-.9-.5-1.9-.2-2.8.3-.9 1-1.6 1.9-2l1-.4c.3-.1.6 0 .8.3l1.5 2.5c.2.3.2.6-.1.9l-.7.8c-.2.2-.2.5-.1.7.5.9 1.2 1.7 2 2.4.8.7 1.7 1.3 2.7 1.7.2.1.5 0 .7-.2l.7-.9c.2-.3.6-.4.9-.2l2.6 1.3c.3.2.4.5.3.8l-.3 1.5z"/>
+
+      <path d="M15.1 8.1c.7.5 1.1 1.2 1.2 2.1.1.4.3.6.7.5.4-.1.5-.4.5-.8-.1-1.2-.6-2.2-1.5-2.9-.9-.7-1.9-1-3-.9-.4 0-.7.3-.6.7 0 .4.3.6.7.6.7-.1 1.4.1 2 .7z"/>
+
+      <path d="M17.9 6.3c1.4 1 2.2 2.4 2.4 4.1.1.4.3.6.7.5.4 0 .6-.3.6-.7-.2-2-1.1-3.7-2.7-4.9-1.4-1.1-3-1.6-4.8-1.5-.4 0-.6.3-.6.7 0 .4.3.6.7.6 1.4-.1 2.6.3 3.7 1.2z"/>
+
+    </svg>
+
+  </a>
+
+
+  <!-- SMS -->
+
+  <a
+    href="sms:+639388694235?body=I%20want%20to%20schedule%20a%20site%20tour"
+    class="contact-button sms"
+    title="SMS">
+
+    <svg viewBox="0 0 24 24" fill="currentColor">
+
+      <path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm-3 11H7v-2h10v2zm0-4H7V7h10v2z"/>
+
+    </svg>
+
+  </a>
+
+
+  <!-- EMAIL -->
+
+  <a
+    href="mailto:propertypaletteph@gmail.com?subject=Property%20Inquiry"
+    class="contact-button email"
+    title="Email">
+
+    <svg viewBox="0 0 24 24" fill="currentColor">
+
+      <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"/>
+
+    </svg>
+
+  </a>
+
+</div>
+
+
+<!-- =========================
+     MESSAGE US
+========================= -->
+
+<button id="messageUs">
+  <span>Message Us</span>
+</button>
+
+
+<!-- =========================
+     CALCULATOR BUTTON
+========================= -->
+
+<button
+  id="calculatorOpen"
+  aria-label="Open calculator">
+
+  <svg
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="#f0bf49"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round">
+
+    <rect
+      x="5"
+      y="2.5"
+      width="14"
+      height="19"
+      rx="2"/>
+
+    <rect
+      x="8"
+      y="5.5"
+      width="8"
+      height="4"
+      rx="1"/>
+
+    <path d="M8 13h2M14 13h2M8 17h2M14 17h2"/>
+
+  </svg>
+
+</button>
+
+
+<!-- =========================
+     CALCULATOR
+========================= -->
+
+<div id="calculatorOverlay">
+
+  <div id="calculatorBox">
+
+    <button
+      class="calc-close"
+      id="calculatorClose">
+      ×
+    </button>
+
+    <h2>Property Palette Amortization Calculator</h2>
+
+
+    <!-- TOTAL CONTRACT PRICE -->
+
+    <div class="calc-group">
+
+      <label>Total Contract Price</label>
+
+      <input
+        type="text"
+        id="totalPrice"
+        inputmode="numeric"
+        placeholder="Enter property price">
+
+    </div>
+
+
+    <!-- EQUITY -->
+
+    <div class="calc-group">
+
+      <label>Downpayment / Equity</label>
+
+      <div class="calc-options">
+
+        <button
+          type="button"
+          id="percentMode"
+          class="active">
+          Percentage
+        </button>
+
+        <button
+          type="button"
+          id="amountMode">
+          Amount
+        </button>
+
+      </div>
+
+      <input
+        type="number"
+        id="equityValue"
+        value="20"
+        placeholder="Enter equity">
+
+    </div>
+
+
+    <!-- EQUITY PAYMENT PERIOD -->
+
+    <div
+      class="calc-group"
+      id="equityMonthsGroup"
+      style="display:none;">
+
+      <label>Equity Payment Period (Months)</label>
+
+      <input
+        type="number"
+        id="equityMonths"
+        value="24"
+        min="1">
+
+    </div>
+
+
+    <!-- LOAN TERM -->
+
+    <div class="calc-group">
+
+      <label>Loan Term</label>
+
+      <select id="loanTerm">
+
+        <option value="5">5 Years</option>
+        <option value="10">10 Years</option>
+        <option value="15">15 Years</option>
+        <option value="20">20 Years</option>
+        <option value="25">25 Years</option>
+        <option value="30">30 Years</option>
+
+      </select>
+
+    </div>
+
+
+    <!-- INTEREST RATE -->
+
+    <div class="calc-group">
+
+      <label>Annual Interest Rate (%)</label>
+
+      <input
+        type="number"
+        id="interestRate"
+        value="6.75"
+        step="0.01">
+
+    </div>
+
+
+    <!-- MONTHLY AMORTIZATION -->
+
+    <div class="monthly-box">
+
+      <p class="monthly-label">
+        Estimated Monthly Amortization
+      </p>
+
+      <p
+        class="monthly-payment"
+        id="monthlyPayment">
+        ₱0.00
+      </p>
+
+    </div>
+
+
+    <!-- DISCLAIMER -->
+
+    <p class="calc-disclaimer">
+      Final amounts and timelines depend on your financial institution.
+    </p>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   POPUP
+========================= */
+
+window.addEventListener("load",function(){
+
+  setTimeout(function(){
+
+    document.getElementById(
+      "custom-popup-overlay"
+    ).style.display="flex";
+
+  },10000);
+
+});
+
+
+document.getElementById(
+  "popupClose"
+).addEventListener(
+  "click",
+  function(){
+
+    document.getElementById(
+      "custom-popup-overlay"
+    ).style.display="none";
+
+  }
+);
+
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const messageUs =
+  document.getElementById("messageUs");
+
+const contactButtons =
+  document.getElementById("contactButtons");
+
+const calculatorOpen =
+  document.getElementById("calculatorOpen");
+
+const messageText =
+  messageUs.querySelector("span");
+
+const totalPriceInput =
+  document.getElementById("totalPrice");
+
+const percentMode =
+  document.getElementById("percentMode");
+
+const amountMode =
+  document.getElementById("amountMode");
+
+const equityValue =
+  document.getElementById("equityValue");
+
+const equityMonths =
+  document.getElementById("equityMonths");
+
+const equityMonthsGroup =
+  document.getElementById("equityMonthsGroup");
+
+let equityType="percent";
+
+
+/* =========================
+   CALCULATOR SHOWS IMMEDIATELY
+========================= */
+
+calculatorOpen.style.display="flex";
+
+
+/* =========================
+   MESSAGE US
+========================= */
+
+messageUs.addEventListener(
+  "click",
+  function(){
+
+    const isOpen =
+      contactButtons.style.display === "flex";
+
+
+    if(isOpen){
+
+      contactButtons.style.display="none";
+
+      calculatorOpen.style.display="flex";
+
+      messageText.textContent="Message Us";
+
+    }else{
+
+      contactButtons.style.display="flex";
+
+      calculatorOpen.style.display="none";
+
+      messageText.textContent="Close";
+
     }
-  </script>
 
-</body>
-</html>
-    <!-- End of headStart -->
+  }
+);
+
+
+/* =========================
+   OPEN CALCULATOR
+========================= */
+
+const calculatorOverlay =
+  document.getElementById(
+    "calculatorOverlay"
+  );
+
+
+calculatorOpen.addEventListener(
+  "click",
+  function(){
+
+    calculatorOverlay.style.display="flex";
+
+  }
+);
+
+
+/* =========================
+   CLOSE CALCULATOR
+========================= */
+
+document.getElementById(
+  "calculatorClose"
+).addEventListener(
+  "click",
+  function(){
+
+    calculatorOverlay.style.display="none";
+
+  }
+);
+
+
+calculatorOverlay.addEventListener(
+  "click",
+  function(e){
+
+    if(e.target === calculatorOverlay){
+
+      calculatorOverlay.style.display="none";
+
+    }
+
+  }
+);
+
+
+/* =========================
+   FORMAT PESO
+========================= */
+
+function formatPeso(amount){
+
+  return "₱" + amount.toLocaleString(
+    "en-PH",
+    {
+      minimumFractionDigits:2,
+      maximumFractionDigits:2
+    }
+  );
+
+}
+
+
+/* =========================
+   GET CONTRACT PRICE
+========================= */
+
+function getTotalPrice(){
+
+  return parseFloat(
+    totalPriceInput.value.replace(/,/g,"")
+  ) || 0;
+
+}
+
+
+/* =========================
+   FORMAT CONTRACT PRICE
+========================= */
+
+totalPriceInput.addEventListener(
+  "input",
+  function(){
+
+    let value =
+      this.value.replace(/[^0-9]/g,"");
+
+    if(value){
+
+      value =
+        parseInt(value,10).toLocaleString(
+          "en-US"
+        );
+
+    }
+
+    this.value=value;
+
+    calculateAmortization();
+
+  }
+);
+
+
+/* =========================
+   AUTOMATIC CALCULATOR
+========================= */
+
+function calculateAmortization(){
+
+  const totalPrice =
+    getTotalPrice();
+
+
+  const equity =
+    parseFloat(
+      equityValue.value
+    ) || 0;
+
+
+  const years =
+    parseFloat(
+      document.getElementById(
+        "loanTerm"
+      ).value
+    ) || 0;
+
+
+  const annualRate =
+    parseFloat(
+      document.getElementById(
+        "interestRate"
+      ).value
+    ) || 0;
+
+
+  /* =========================
+     EMPTY PRICE
+  ========================= */
+
+  if(totalPrice <= 0){
+
+    document.getElementById(
+      "monthlyPayment"
+    ).textContent="₱0.00";
+
+    return;
+
+  }
+
+
+  /* =========================
+     EQUITY
+  ========================= */
+
+  let equityAmount=0;
+
+
+  if(equityType==="percent"){
+
+    equityAmount =
+      totalPrice*(equity/100);
+
+  }else{
+
+    equityAmount=equity;
+
+  }
+
+
+  if(equityAmount<0){
+
+    equityAmount=0;
+
+  }
+
+
+  if(equityAmount>totalPrice){
+
+    equityAmount=totalPrice;
+
+  }
+
+
+  /* =========================
+     LOAN AMOUNT
+  ========================= */
+
+  const loanAmount =
+    totalPrice-equityAmount;
+
+
+  /* =========================
+     MONTHLY AMORTIZATION
+  ========================= */
+
+  let monthlyPayment=0;
+
+
+  if(loanAmount>0 && years>0){
+
+    const monthlyRate =
+      annualRate/100/12;
+
+    const numberOfPayments =
+      years*12;
+
+
+    if(monthlyRate===0){
+
+      monthlyPayment =
+        loanAmount/numberOfPayments;
+
+    }else{
+
+      monthlyPayment =
+        loanAmount*
+        (
+          monthlyRate*
+          Math.pow(
+            1+monthlyRate,
+            numberOfPayments
+          )
+        )/
+        (
+          Math.pow(
+            1+monthlyRate,
+            numberOfPayments
+          )-1
+        );
+
+    }
+
+  }
+
+
+  /* =========================
+     DISPLAY
+  ========================= */
+
+  document.getElementById(
+    "monthlyPayment"
+  ).textContent =
+    formatPeso(monthlyPayment);
+
+}
+
+
+/* =========================
+   AUTO UPDATE
+========================= */
+
+document.getElementById(
+  "interestRate"
+).addEventListener(
+  "input",
+  calculateAmortization
+);
+
+
+document.getElementById(
+  "loanTerm"
+).addEventListener(
+  "change",
+  calculateAmortization
+);
+
+
+equityValue.addEventListener(
+  "input",
+  calculateAmortization
+);
+
+
+equityMonths.addEventListener(
+  "input",
+  calculateAmortization
+);
+
+
+/* =========================
+   PERCENTAGE MODE
+========================= */
+
+percentMode.addEventListener(
+  "click",
+  function(){
+
+    equityType="percent";
+
+    percentMode.classList.add("active");
+
+    amountMode.classList.remove("active");
+
+    equityValue.value="20";
+
+    equityMonthsGroup.style.display="none";
+
+    calculateAmortization();
+
+  }
+);
+
+
+/* =========================
+   AMOUNT MODE
+========================= */
+
+amountMode.addEventListener(
+  "click",
+  function(){
+
+    equityType="amount";
+
+    amountMode.classList.add("active");
+
+    percentMode.classList.remove("active");
+
+    equityValue.value="";
+
+    equityMonthsGroup.style.display="block";
+
+    calculateAmortization();
+
+  }
+);
+
+
+/* =========================
+   INITIAL CALCULATION
+========================= */
+
+calculateAmortization();
+
+</script>
 	
 	<style data-framer-font-css>/* cyrillic-ext */
 @font-face {
